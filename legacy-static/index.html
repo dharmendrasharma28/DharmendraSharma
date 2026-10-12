@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dharmendra Sharma · Mobile & Platform Engineering</title>
+  <meta name="description" content="Dharmendra Sharma — Manager, Mobile & Platform Engineering at Mahindra Logistics. 13+ years shipping Android & iOS products and leading teams.">
+  <meta property="og:title" content="Dharmendra Sharma · Portfolio">
+  <meta property="og:description" content="13+ years of Android & iOS. Leading mobile & platform engineering at Mahindra Logistics.">
+  <meta property="og:image" content="assets/dharmendra.jpg">
+  <meta name="theme-color" content="#f3eee4">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316171b'/%3E%3Cpath d='M6 10h20M6 16h20M6 22h12' stroke='%23ff5a1f' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="top">
+  <div class="wrap nav__inner">
+    <a href="#top" class="brand" aria-label="Dharmendra Sharma — home">
+      <span class="brand__box" aria-hidden="true">DS</span>
+      <span class="brand__text">Dharmendra <b>Sharma</b></span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="#route">Route</a>
+      <a href="#tracking">Tracking</a>
+      <a href="#cargo">Cargo</a>
+      <a href="#manifest">Manifest</a>
+      <a href="#customs">Customs</a>
+      <a href="#dispatch" class="nav__cta">Dispatch a message</a>
+    </nav>
+
+    <div class="nav__tools">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4a8.5 8.5 0 1 0 11.5 11.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= HERO: SHIPPING LABEL ================= -->
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="wrap hero__grid">
+
+    <div class="label reveal">
+      <div class="label__strip">
+        <span class="mono">TRACKING № <b>DS-2013-GGN</b></span>
+        <span class="mono label__priority">PRIORITY</span>
+      </div>
+
+      <div class="label__route mono">
+        <div>
+          <span class="label__k">FROM</span>
+          <span class="label__v">Android code · Bangalore · 2013</span>
+        </div>
+        <svg class="label__arrow" viewBox="0 0 48 24" aria-hidden="true"><path d="M2 12h40M34 4l10 8-10 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <span class="label__k">TO</span>
+          <span class="label__v">Leading a team of 5–10 · Gurugram · now</span>
+        </div>
+      </div>
+
+      <p class="hero__hello">Hello, I am</p>
+      <h1 class="hero__title" id="heroTitle">Dharmendra<br>Sharma</h1>
+      <p class="hero__role">Manager · Mobile &amp; Platform Engineering<br><span>Mahindra Logistics, Gurugram</span></p>
+
+      <p class="hero__blurb">
+        I've spent 13+ years moving mobile products from idea to app store — and the last
+        five moving people and pallets with them. Now I lead the engineers who do it.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#cargo" class="btn btn--solid">Inspect the cargo</a>
+        <a href="assets/Dharmendra-Sharma-Resume.pdf" class="btn btn--line" download>Download résumé <span class="mono">PDF</span></a>
+      </div>
+
+      <div class="barcode" aria-hidden="true">
+        <span class="barcode__bars"></span>
+        <span class="mono">13+ YRS · ANDROID · IOS · TEAM 5–10 · M.TECH DATA SCI</span>
+      </div>
+    </div>
+
+    <div class="hero__visual reveal">
+      <figure class="stamp">
+        <div class="stamp__plate">
+          <img src="assets/dharmendra.jpg" alt="Dharmendra Sharma" width="500" height="860">
+        </div>
+        <figcaption class="mono stamp__cap">
+          <span>GURUGRAM · HARYANA</span>
+          <span>EST. 2013</span>
+        </figcaption>
+      </figure>
+      <span class="rubber" aria-hidden="true">Delivered</span>
+      <div class="hero__sticker hero__sticker--a mono" aria-hidden="true">HANDLE WITH CARE<br><small>ships Android &amp; iOS</small></div>
+      <div class="hero__sticker hero__sticker--b mono" aria-hidden="true">THIS SIDE UP ↑</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track mono">
+    <span>Android</span><span>iOS</span><span>SwiftUI</span><span>Flutter &amp; Dart</span><span>Systems Design</span><span>Algorithm Design</span><span>Data Structures</span><span>SOLID</span><span>Agile &amp; Scrum</span><span>MVVM</span><span>Data Science</span><span>Team Leadership</span>
+    <span>Android</span><span>iOS</span><span>SwiftUI</span><span>Flutter &amp; Dart</span><span>Systems Design</span><span>Algorithm Design</span><span>Data Structures</span><span>SOLID</span><span>Agile &amp; Scrum</span><span>MVVM</span><span>Data Science</span><span>Team Leadership</span>
+  </div>
+</div>
+
+<!-- ================= ROUTE MAP ================= -->
+<section class="section" id="route" aria-labelledby="routeTitle">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="mono sec-head__tag">01 · ROUTE</span>
+      <h2 id="routeTitle">Thirteen years, three cities, one parcel.</h2>
+      <p>Picked up in Bangalore as an Android developer. Routed through Jaipur's startups. Delivered to Gurugram, where I now run mobile &amp; platform engineering.</p>
+    </div>
+
+    <div class="route reveal" id="routeMap">
+      <svg viewBox="0 0 1000 320" class="route__svg" aria-hidden="true">
+        <defs>
+          <path id="routePath" d="M 90 250 C 220 250, 260 90, 420 100 S 640 230, 760 180 S 880 70, 910 70"/>
+        </defs>
+        <use href="#routePath" class="route__ghost"/>
+        <use href="#routePath" class="route__line" id="routeLine"/>
+
+        <g class="route__node" transform="translate(90 250)">
+          <circle r="22" class="route__ring"/><circle r="9" class="route__dot"/>
+          <text y="52" class="route__city">Bangalore</text>
+          <text y="72" class="route__year mono">2013 · picked up</text>
+        </g>
+        <g class="route__node" transform="translate(420 100)">
+          <circle r="22" class="route__ring"/><circle r="9" class="route__dot"/>
+          <text y="-36" class="route__city">Jaipur</text>
+          <text y="-18" class="route__year mono">2015 – 2019 · in transit</text>
+        </g>
+        <g class="route__node" transform="translate(910 70)">
+          <circle r="22" class="route__ring"/><circle r="9" class="route__dot"/>
+          <text y="52" class="route__city" text-anchor="end">Gurugram</text>
+          <text y="72" class="route__year mono" text-anchor="end">2019 – now · delivered</text>
+        </g>
+        <g class="route__parcel" id="routeParcel" transform="translate(90 250)">
+          <g transform="translate(-16 -40)">
+            <path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z" transform="scale(1.4)" fill="var(--accent)" stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M4 7.5 12 12l8-4.5M12 12v9" transform="scale(1.4)" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <ul class="stats reveal" aria-label="At a glance">
+      <li><span class="stats__n mono" data-count="13" data-suffix="+">0</span><span>years in mobile</span></li>
+      <li><span class="stats__n mono" data-count="7">0</span><span>companies, one craft</span></li>
+      <li><span class="stats__n mono">5–10</span><span>engineers I lead</span></li>
+      <li><span class="stats__n mono" data-count="2">0</span><span>platforms, both stores</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= TRACKING: EXPERIENCE ================= -->
+<section class="section section--tint" id="tracking" aria-labelledby="trackTitle">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="mono sec-head__tag">02 · TRACKING HISTORY</span>
+      <h2 id="trackTitle">Every scan along the way.</h2>
+      <p>Newest first. Expand any stop to read what happened there.</p>
+    </div>
+
+    <ol class="track">
+      <li class="stop stop--now reveal">
+        <div class="stop__rail"><span class="stop__dot"></span></div>
+        <details class="stop__card" open>
+          <summary>
+            <span class="status status--delivered mono">Delivered</span>
+            <span class="stop__title">Manager · Mahindra Logistics</span>
+            <span class="stop__meta mono">Gurugram, Haryana · Aug 2024 – Present</span>
+            <span class="stop__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="stop__body">
+            <p class="stop__tag mono">TEAM OF 5–10</p>
+            <ul>
+              <li>Lead a team of 5–10 people across product and mobile engineering.</li>
+              <li>Spearhead a people‑transportation application built to improve mobility.</li>
+              <li>Lead a warehouse management system aimed at boosting productivity and efficiency.</li>
+              <li>Support the Android and iOS teams, ensuring seamless integration and optimal performance across platforms.</li>
+              <li>Focus on cutting‑edge solutions that streamline operations and elevate user experiences.</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="stop reveal">
+        <div class="stop__rail"><span class="stop__dot"></span></div>
+        <details class="stop__card">
+          <summary>
+            <span class="status status--out mono">Out for delivery</span>
+            <span class="stop__title">Deputy Manager · Mahindra Logistics</span>
+            <span class="stop__meta mono">Gurugram, Haryana · Dec 2019 – Jul 2024</span>
+            <span class="stop__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="stop__body">
+            <ul>
+              <li>Developed innovative applications designed to enhance mobility and productivity — the groundwork for Alyte and the WMS.</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="stop reveal">
+        <div class="stop__rail"><span class="stop__dot"></span></div>
+        <details class="stop__card">
+          <summary>
+            <span class="status status--transit mono">In transit</span>
+            <span class="stop__title">Mobile Application Developer · Tangish</span>
+            <span class="stop__meta mono">Gurugram, Haryana · Sep 2019 – Nov 2019</span>
+            <span class="stop__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="stop__body">
+            <ul>
+              <li>Led development of an Android and iOS app for organisation‑wide project, task and team management.</li>
+              <li>Worked closely with the team to implement new features and ensure timely deployment.</li>
+              <li>Built and published the apps on the Play Store and App Store.</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="stop reveal">
+        <div class="stop__rail"><span class="stop__dot"></span></div>
+        <details class="stop__card">
+          <summary>
+            <span class="status status--transit mono">In transit</span>
+            <span class="stop__title">Mobile Application Developer · Unomer</span>
+            <span class="stop__meta mono">Greater Jaipur Area · Jul 2018 – Aug 2019</span>
+            <span class="stop__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="stop__body">
+            <ul>
+              <li>Used the Android SDK and iOS framework to run in‑app mobile market research initiatives.</li>
+              <li>Built and integrated our SDK with diverse applications.</li>
+              <li>Continuously enhanced and maintained the SDK code to align with the latest Android and iOS versions.</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="stop reveal">
+        <div class="stop__rail"><span class="stop__dot"></span></div>
+        <details class="stop__card">
+          <summary>
+            <span class="status status--transit mono">In transit</span>
+            <span class="stop__title">Mobile Application Developer · Alleviate Technologies</span>
+            <span class="stop__meta mono">Jaipur · Mar 2016 – Jun 2018</span>
+            <span class="stop__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="stop__body">
+            <ul>
+              <li>Collaborated across functions to analyse, design and deploy new features.</li>
+              <li>Managed the end‑to‑end process of building and publishing apps on the App Store and Play Store.</li>
+              <li>Explored and integrated new technologies to optimise performance and enhance user experience.</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="stop reveal">
+        <div class="stop__rail"><span class="stop__dot"></span></div>
+        <details class="stop__card">
+          <summary>
+            <span class="status status--transit mono">In transit</span>
+            <span class="stop__title">Senior Android Developer · RG Web Studio</span>
+            <span class="stop__meta mono">Jaipur · Apr 2015 – Feb 2016</span>
+            <span class="stop__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="stop__body">
+            <ul>
+              <li>Developed applications tailored to client requirements, aligned with project objectives.</li>
+              <li>Worked with project leaders and delivery managers to give accurate estimates for new features.</li>
+              <li>Maintained and enhanced applications and services, resolving bugs promptly.</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="stop stop--origin reveal">
+        <div class="stop__rail"><span class="stop__dot"></span></div>
+        <details class="stop__card">
+          <summary>
+            <span class="status status--picked mono">Picked up</span>
+            <span class="stop__title">Associate Software Engineer · nibble MATRIX Technologies</span>
+            <span class="stop__meta mono">Bangalore · Aug 2013 – Mar 2015</span>
+            <span class="stop__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="stop__body">
+            <ul>
+              <li>Contributed to eBill, an online food‑ordering Point of Sale system, focusing on the client app and billing system.</li>
+              <li>Owned critical logic and algorithms for seamless integration with other systems, ensuring performance.</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= CARGO: PROJECTS ================= -->
+<section class="section" id="cargo" aria-labelledby="cargoTitle">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="mono sec-head__tag">03 · CARGO</span>
+      <h2 id="cargoTitle">What's in the boxes.</h2>
+      <p>Products I've led or built — from the loading dock to the lunch counter.</p>
+    </div>
+
+    <ul class="crates">
+      <li class="crate reveal">
+        <div class="crate__strip mono"><span>SKU ALYTE‑01</span><span>MAHINDRA LOGISTICS</span><span>2019 → NOW</span></div>
+        <span class="sticker sticker--orange mono">PRIORITY</span>
+        <span class="crate__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13v5a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1v-1h-11v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 13h18" stroke="currentColor" stroke-width="1.7"/><circle cx="7" cy="15.5" r="1.1" fill="currentColor"/><circle cx="17" cy="15.5" r="1.1" fill="currentColor"/></svg></span>
+        <h3>Alyte</h3>
+        <p>People‑transportation app for everyday mobility. I laid the groundwork as Deputy Manager and now spearhead it with a team of 5–10 across Android and iOS.</p>
+        <ul class="crate__tags mono"><li>Android</li><li>iOS</li><li>Lead</li></ul>
+      </li>
+
+      <li class="crate reveal">
+        <div class="crate__strip mono"><span>SKU WMS‑02</span><span>MAHINDRA LOGISTICS</span><span>2019 → NOW</span></div>
+        <span class="sticker sticker--teal mono">HEAVY DUTY</span>
+        <span class="crate__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 20v-6h8v6M8 17h8" stroke="currentColor" stroke-width="1.7"/></svg></span>
+        <h3>WMS</h3>
+        <p>Warehouse management system built for productivity and efficiency on the floor — and the integrations that keep it honest.</p>
+        <ul class="crate__tags mono"><li>Mobile</li><li>Platform</li><li>Lead</li></ul>
+      </li>
+
+      <li class="crate reveal">
+        <div class="crate__strip mono"><span>SKU SIR‑03</span><span>MAHINDRA LOGISTICS</span><span>2024 → NOW</span></div>
+        <span class="sticker sticker--red mono">FRAGILE</span>
+        <span class="crate__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 21 19H3L12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 9v4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="16.2" r="1.1" fill="currentColor"/></svg></span>
+        <h3>Safety Incident Report</h3>
+        <p>App for reporting and tracking safety incidents across sites — fast capture in the field, clear follow‑through for the people responsible.</p>
+        <ul class="crate__tags mono"><li>Android</li><li>iOS</li><li>Operations</li></ul>
+      </li>
+
+      <li class="crate reveal">
+        <div class="crate__strip mono"><span>SKU TNG‑04</span><span>TANGISH</span><span>2019</span></div>
+        <span class="sticker sticker--ink mono">SHIPPED ×2</span>
+        <span class="crate__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 10h4M7 14h10M15 10h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <h3>Work management app</h3>
+        <p>Led development of an Android and iOS app for organisation‑wide project, task and team management. Built it, shipped it to both stores.</p>
+        <ul class="crate__tags mono"><li>Android</li><li>iOS</li><li>Published</li></ul>
+      </li>
+
+      <li class="crate reveal">
+        <div class="crate__strip mono"><span>SKU SDK‑05</span><span>UNOMER</span><span>2018 – 2019</span></div>
+        <span class="sticker sticker--teal mono">MULTI‑PACK</span>
+        <span class="crate__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 7.5 12 12l8-4.5M12 12v9" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+        <h3>In‑app research SDK</h3>
+        <p>An Android and iOS SDK that runs mobile market research inside partner apps. Integrated it with diverse codebases and kept it current with every OS release.</p>
+        <ul class="crate__tags mono"><li>SDK</li><li>Android</li><li>iOS</li></ul>
+      </li>
+
+      <li class="crate reveal">
+        <div class="crate__strip mono"><span>SKU POS‑06</span><span>NIBBLE MATRIX</span><span>2013 – 2015</span></div>
+        <span class="sticker sticker--orange mono">ORIGIN</span>
+        <span class="crate__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h14l-1 12H6L5 4Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 8h8M8 11.5h8M9 20h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 16v4" stroke="currentColor" stroke-width="1.7"/></svg></span>
+        <h3>eBill POS</h3>
+        <p>Online food‑ordering Point of Sale. I owned the client app, the billing system, and the critical logic that integrated with everything else.</p>
+        <ul class="crate__tags mono"><li>Android</li><li>Billing</li><li>Algorithms</li></ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= MANIFEST: SKILLS ================= -->
+<section class="section section--tint" id="manifest" aria-labelledby="manifestTitle">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="mono sec-head__tag">04 · PACKING MANIFEST</span>
+      <h2 id="manifestTitle">Declared contents.</h2>
+      <p>Everything inspected, nothing undeclared.</p>
+    </div>
+
+    <div class="manifest reveal">
+      <div class="manifest__col">
+        <h3 class="mono">PLATFORMS</h3>
+        <ul class="checklist">
+          <li><b>Android</b><span>13 years of the SDK, from Gingerbread to Jetpack</span></li>
+          <li><b>iOS</b><span>UIKit to SwiftUI, App Store publishing</span></li>
+          <li><b>Flutter &amp; Dart</b><span>one codebase when it earns its keep</span></li>
+        </ul>
+      </div>
+      <div class="manifest__col">
+        <h3 class="mono">ENGINEERING</h3>
+        <ul class="checklist">
+          <li><b>Systems design</b><span>apps and the platforms behind them</span></li>
+          <li><b>Algorithms &amp; data structures</b><span>the logic nobody else wanted to own</span></li>
+          <li><b>SOLID &amp; MVVM</b><span>architecture that outlives frameworks</span></li>
+          <li><b>SDK development</b><span>built, integrated, maintained across OS releases</span></li>
+        </ul>
+      </div>
+      <div class="manifest__col">
+        <h3 class="mono">DELIVERY &amp; PEOPLE</h3>
+        <ul class="checklist">
+          <li><b>Team leadership</b><span>5–10 engineers across product and mobile</span></li>
+          <li><b>Agile &amp; Scrum</b><span>estimates people can plan around</span></li>
+          <li><b>Data science</b><span>M.Tech, BITS Pilani</span></li>
+          <li><b>Mobile UX</b><span>certified, and opinionated about it</span></li>
+        </ul>
+      </div>
+      <div class="manifest__foot mono">
+        <span>GROSS: 13+ YRS</span><span>NET: 7 COMPANIES</span><span>PIECES: 2 PLATFORMS</span><span>INSPECTED ✓</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CUSTOMS: EDUCATION + CERTS ================= -->
+<section class="section" id="customs" aria-labelledby="customsTitle">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="mono sec-head__tag">05 · CUSTOMS &amp; CLEARANCE</span>
+      <h2 id="customsTitle">Papers in order.</h2>
+    </div>
+
+    <div class="customs">
+      <div class="customs__edu reveal">
+        <h3 class="mono customs__h">EDUCATION</h3>
+        <ul class="edu">
+          <li><span class="mono edu__yr">2023 – 2025</span><div><b>M.Tech, Data Science &amp; Engineering</b><span>BITS Pilani</span></div></li>
+          <li><span class="mono edu__yr">2009 – 2013</span><div><b>B.Tech, Information Technology</b><span>JECRC, Jaipur</span></div></li>
+          <li><span class="mono edu__yr">2012</span><div><b>Trainee, C# &amp; ADO.NET</b><span>IIHT, Jaipur · Console, Windows and web apps</span></div></li>
+          <li><span class="mono edu__yr">2007 – 2008</span><div><b>Higher Secondary, Physics, Chemistry &amp; Mathematics</b><span>Central Public, Talwandi, Kota</span></div></li>
+        </ul>
+        <p class="mono customs__lang">LANGUAGES · Hindi · English</p>
+      </div>
+
+      <div class="customs__certs reveal">
+        <h3 class="mono customs__h">CERTIFICATIONS</h3>
+        <ul class="seals">
+          <li class="seal"><span class="seal__ring"><b>Sw</b><small>cleared</small></span><span>MVVM Design Pattern in SwiftUI</span></li>
+          <li class="seal"><span class="seal__ring"><b>S</b><small>cleared</small></span><span>SOLID Principles</span></li>
+          <li class="seal"><span class="seal__ring"><b>Ag</b><small>cleared</small></span><span>Agile Project Management: Scrum Step by Step</span></li>
+          <li class="seal"><span class="seal__ring"><b>Fl</b><small>cleared</small></span><span>Flutter &amp; Dart: The Complete Guide [2022 Edition]</span></li>
+          <li class="seal"><span class="seal__ring"><b>UX</b><small>cleared</small></span><span>Creating a Great User Experience for Mobile Apps</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stickers reveal" aria-label="Interests">
+      <span class="mono stickers__k">OFF THE CLOCK</span>
+      <span class="pill">Learning</span>
+      <span class="pill">Free time</span>
+      <span class="pill">Mobile apps</span>
+      <span class="pill">Logistics</span>
+      <span class="pill">Improvement</span>
+      <span class="pill">Writing</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DISPATCH: CONTACT ================= -->
+<section class="section section--tint" id="dispatch" aria-labelledby="dispatchTitle">
+  <div class="wrap">
+    <div class="envelope reveal">
+      <div class="envelope__inner">
+        <span class="mono sec-head__tag">06 · DISPATCH</span>
+        <h2 id="dispatchTitle">Let's build something useful together.</h2>
+        <p>Open to good problems in mobile, platforms and logistics. Reply within one business day — faster than most couriers.</p>
+        <ul class="envelope__links">
+          <li><a href="mailto:sharmadharmendra2810@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            <span>sharmadharmendra2810@gmail.com</span></a></li>
+          <li><a href="tel:+918890900920">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <span>+91 88909 00920</span></a></li>
+          <li><a href="https://linkedin.com/in/dharmendrasharma-462a7b79" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10v7M8 7v.5M12 17v-4a2 2 0 0 1 4 0v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span>linkedin.com/in/dharmendrasharma-462a7b79</span></a></li>
+        </ul>
+        <a href="mailto:sharmadharmendra2810@gmail.com?subject=Hello%20Dharmendra" class="btn btn--solid envelope__cta">Send a message</a>
+        <span class="rubber rubber--air" aria-hidden="true">Air mail</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner mono">
+    <span>© <span id="year"></span> DHARMENDRA SHARMA · GURUGRAM, HARYANA</span>
+    <span>TRACKING № DS‑2013‑GGN · STATUS: DELIVERED</span>
+    <a href="#top">BACK TO TOP ↑</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

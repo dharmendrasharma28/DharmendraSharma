@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Splash from "@/components/Splash";
 import SmoothScroll from "@/components/SmoothScroll";
 import Nav from "@/components/Nav";
@@ -17,10 +17,11 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   const [ready, setReady] = useState(false);
+  const handleSplashDone = useCallback(() => setReady(true), []);
 
   return (
     <>
-      <Splash onDone={() => setReady(true)} />
+      <Splash onDone={handleSplashDone} />
       <SmoothScroll>
         <Nav />
         <main>

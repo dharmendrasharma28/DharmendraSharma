@@ -2,98 +2,155 @@
 
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { MeshDistortMaterial, Float, Sparkles } from "@react-three/drei";
 import * as THREE from "three";
 
-function getAccent() {
-  if (typeof window === "undefined") return "#ff6a1f";
-  const v = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
-  return v || "#ff6a1f";
-}
+/** Fresnel halo shader — soft violet glow that fades at the sphere edge. */
+const haloVert = `
+  varying vec3 vNormal;
+  varying vec3 vView;
+  void main() {
+    vNormal = normalize(normalMatrix * normal);
+    vec4 mv = modelViewMatrix * vec4(position, 1.0);
+    vView = normalize(-mv.xyz);
+    gl_Position = projectionMatrix * mv;
+  }
+`;
+const haloFrag = `
+  uniform vec3 uColor;
+  uniform float uPower;
+  uniform float uIntensity;
+  varying vec3 vNormal;
+  varying vec3 vView;
+  void main() {
+    float f = pow(max(0.0, dot(vNormal, vView)), uPower);
+    gl_FragColor = vec4(uColor, f * uIntensity);
+  }
+`;
 
-function Core() {
+function Orb({ light }: { light: boolean }) {
   const group = useRef<THREE.Group>(null);
-  const mat = useRef<any>(null);
-  const scroll = useRef(0);
-  const color = useMemo(() => new THREE.Color(getAccent()), []);
+  const core = useRef<THREE.Mesh>(null);
+  const halo = useRef<THREE.ShaderMaterial>(null);
+  const outer = useRef<THREE.ShaderMaterial>(null);
+  const lamp = useRef<THREE.PointLight>(null);
+
+  const haloUniforms = useMemo(
+    () => ({ uColor: { value: new THREE.Color("#b23cff") }, uPower: { value: 2.2 }, uIntensity: { value: 1.2 } }),
+    []
+  );
+  const outerUniforms = useMemo(
+    () => ({ uColor: { value: new THREE.Color("#7a1fd1") }, uPower: { value: 3.6 }, uIntensity: { value: 0.5 } }),
+    []
+  );
+  // Light mode: a deep violet/cobalt orb that reads on paper instead of an additive glow.
+  const coreColor = light ? "#4f2dd9" : "#fff4fb";
+  const blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;
+  haloUniforms.uColor.value.set(light ? "#6d4df0" : "#ff4d8d");
+  outerUniforms.uColor.value.set(light ? "#ff5a1f" : "#22d3ee");
 
   useFrame((state, delta) => {
-    if (typeof window !== "undefined") {
-      const doc = document.documentElement;
-      const max = doc.scrollHeight - window.innerHeight;
-      scroll.current = max > 0 ? Math.min(1, window.scrollY / max) : 0;
-    }
-    const s = scroll.current;
+    const t = state.clock.elapsedTime;
+    const pulse = 1 + Math.sin(t * 1.4) * 0.045;
     if (group.current) {
-      group.current.rotation.y += delta * (0.18 + s * 0.5);
-      group.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.2) * 0.12;
-      const px = state.pointer.x * 0.4;
-      const py = state.pointer.y * 0.25;
-      group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, px, 0.04);
-      group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, py, 0.04);
-      group.current.scale.setScalar(THREE.MathUtils.lerp(1, 0.72, s));
-      group.current.position.z = THREE.MathUtils.lerp(0, -1.6, s);
+      group.current.rotation.y += delta * 0.15;
+      const px = state.pointer.x * 0.35;
+      const py = state.pointer.y * 0.22;
+      group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, px, 0.035);
+      group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, py + Math.sin(t * 0.8) * 0.06, 0.035);
     }
-    if (mat.current) {
-      mat.current.distort = 0.38 + Math.sin(state.clock.elapsedTime * 0.6) * 0.08;
-    }
+    if (core.current) core.current.scale.setScalar(pulse);
+    if (halo.current) halo.current.uniforms.uIntensity.value = 0.9 + Math.sin(t * 1.4) * 0.15;
+    if (outer.current) outer.current.uniforms.uIntensity.value = 0.5 + Math.sin(t * 1.4 + 1) * 0.12;
+    if (lamp.current) lamp.current.intensity = 6 + Math.sin(t * 1.4) * 1.5;
   });
 
   return (
     <group ref={group}>
-      <mesh>
-        <icosahedronGeometry args={[1.35, 4]} />
-        <MeshDistortMaterial
-          ref={mat}
-          color={color}
-          roughness={0.25}
-          metalness={0.4}
-          distort={0.4}
-          speed={1.4}
-          emissive={color}
-          emissiveIntensity={0.18}
+      {/* bright white-pink core */}
+      <mesh ref={core}>
+        <sphereGeometry args={[0.3, 64, 64]} />
+        <meshBasicMaterial color={coreColor} toneMapped={false} />
+      </mesh>
+      {/* inner violet halo */}
+      <mesh scale={1.9}>
+        <sphereGeometry args={[0.3, 64, 64]} />
+        <shaderMaterial
+          ref={halo}
+          vertexShader={haloVert}
+          fragmentShader={haloFrag}
+          uniforms={haloUniforms}
+          transparent
+          depthWrite={false}
+          blending={blending}
         />
       </mesh>
-      <mesh scale={1.012}>
-        <icosahedronGeometry args={[1.35, 1]} />
-        <meshBasicMaterial color={color} wireframe transparent opacity={0.16} />
+      {/* wide soft halo */}
+      <mesh scale={3.4}>
+        <sphereGeometry args={[0.3, 48, 48]} />
+        <shaderMaterial
+          ref={outer}
+          vertexShader={haloVert}
+          fragmentShader={haloFrag}
+          uniforms={outerUniforms}
+          transparent
+          depthWrite={false}
+          blending={blending}
+        />
       </mesh>
-
-      <Float speed={1.6} rotationIntensity={1.1} floatIntensity={1.4}>
-        <mesh position={[2.3, 0.9, -0.6]}>
-          <octahedronGeometry args={[0.28, 0]} />
-          <meshStandardMaterial color="#19b6a8" roughness={0.3} metalness={0.5} />
-        </mesh>
-      </Float>
-      <Float speed={1.2} rotationIntensity={1.4} floatIntensity={1.8}>
-        <mesh position={[-2.1, -0.6, -0.3]}>
-          <boxGeometry args={[0.34, 0.34, 0.34]} />
-          <meshStandardMaterial color={color} roughness={0.35} metalness={0.4} wireframe={false} />
-        </mesh>
-      </Float>
-      <Float speed={2} rotationIntensity={0.8} floatIntensity={1.2}>
-        <mesh position={[0.4, -1.6, 0.4]}>
-          <tetrahedronGeometry args={[0.26, 0]} />
-          <meshStandardMaterial color="#f4f2ec" roughness={0.5} metalness={0.1} />
-        </mesh>
-      </Float>
+      <pointLight ref={lamp} color="#ff4d8d" intensity={6} distance={12} decay={2} />
     </group>
   );
 }
 
-export default function Scene3D() {
+// Deterministic particle field (seeded, so render stays pure and SSR-safe).
+const PARTICLE_POSITIONS = (() => {
+  let seed = 1337;
+  const rand = () => {
+    seed = (seed * 16807) % 2147483647;
+    return (seed - 1) / 2147483646;
+  };
+  const n = 220;
+  const arr = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) {
+    const r = 2.2 + rand() * 5;
+    const a = rand() * Math.PI * 2;
+    const b = (rand() - 0.5) * Math.PI;
+    arr[i * 3] = Math.cos(a) * Math.cos(b) * r;
+    arr[i * 3 + 1] = Math.sin(b) * r * 0.6;
+    arr[i * 3 + 2] = Math.sin(a) * Math.cos(b) * r - 1;
+  }
+  return arr;
+})();
+
+function Particles({ light }: { light: boolean }) {
+  const ref = useRef<THREE.Points>(null);
+  const positions = PARTICLE_POSITIONS;
+
+  useFrame((_, delta) => {
+    if (ref.current) ref.current.rotation.y += delta * 0.02;
+  });
+
+  return (
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <pointsMaterial size={0.025} color={light ? "#4f2dd9" : "#67e8f9"} transparent opacity={0.35} sizeAttenuation depthWrite={false} />
+    </points>
+  );
+}
+
+export default function Scene3D({ light = false }: { light?: boolean }) {
   return (
     <Canvas
-      dpr={[1, 1.6]}
-      gl={{ antialias: true, alpha: true }}
-      camera={{ position: [0, 0, 5.2], fov: 42 }}
-      className="!touch-auto"
+      dpr={[1, 2]}
+      gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+      camera={{ position: [0, 0, 5], fov: 45 }}
+      style={{ background: "transparent" }}
     >
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[3, 4, 5]} intensity={1.1} />
-      <pointLight position={[-4, -2, -2]} intensity={0.6} color="#19b6a8" />
-      <Core />
-      <Sparkles count={60} scale={[8, 5, 4]} size={1.6} speed={0.25} opacity={0.35} color="#f4f2ec" />
+      <ambientLight intensity={0.2} />
+      <Orb light={light} />
+      <Particles light={light} />
     </Canvas>
   );
 }

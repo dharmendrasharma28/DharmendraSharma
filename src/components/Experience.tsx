@@ -1,124 +1,78 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { experience } from "@/data/resume";
-import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
-import { gsap } from "@/lib/gsap";
+import { experience, education, certifications } from "@/data/resume";
+import { useReveal } from "@/lib/useReveal";
 
 export default function Experience() {
-  const scope = useRef<HTMLDivElement>(null);
-  const [openId, setOpenId] = useState<string | null>(experience[0]?.id ?? null);
-
-  useIsomorphicLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>(".reveal", scope.current!).forEach((el, i) => {
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          delay: (i % 7) * 0.04,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 90%" },
-        });
-      });
-
-      gsap.to(".tl-line-fill", {
-        scaleY: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".tl-rail",
-          start: "top 75%",
-          end: "bottom 85%",
-          scrub: 0.6,
-        },
-      });
-    }, scope);
-    return () => ctx.revert();
-  }, []);
+  const scope = useReveal<HTMLElement>();
 
   return (
-    <section id="experience" ref={scope} className="section">
-      <div className="wrap">
-        <div className="reveal mb-10 max-w-[62ch]">
-          <span className="mono text-accent">03 · Tracking history</span>
-          <h2 className="mt-2 font-display text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold tracking-tight">
-            Every scan along the way.
-          </h2>
-          <p className="mt-3 text-ink-2">Newest first. Open any stop to read what happened there.</p>
+    <section id="experience" ref={scope} className="relative z-10 py-20 lg:py-28 overflow-x-clip">
+      <div className="absolute top-1/3 -left-20 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="reveal text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-4">Career Log</h2>
+          <p className="text-slate-400 text-sm tracking-[0.2em] uppercase opacity-80">13 years · 7 companies · 3 cities</p>
         </div>
 
-        <div className="relative">
-          <div className="tl-rail absolute left-[13px] top-2 bottom-2 w-[2px] bg-line sm:left-[19px]">
-            <div className="tl-line-fill h-full w-full origin-top scale-y-0 bg-accent" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          {/* timeline */}
+          <div className="lg:col-span-7 relative">
+            <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-primary via-white/10 to-transparent" />
+            <div className="space-y-6">
+              {experience.map((e, i) => (
+                <div key={e.id} className="reveal relative pl-10" data-delay={i * 0.06}>
+                  <span className={`absolute left-0 top-5 w-6 h-6 rounded-full border flex items-center justify-center ${
+                    e.status === "current" ? "border-primary bg-primary/20 shadow-[0_0_15px_rgba(var(--primary-rgb),0.6)]" : "border-white/15 bg-background-dark"
+                  }`}>
+                    <span className={`w-2 h-2 rounded-full ${e.status === "current" ? "bg-primary animate-pulse" : "bg-white/30"}`} />
+                  </span>
+                  <div className="glass-panel glass-card-hover rounded-2xl p-6 border border-white/5">
+                    <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                      <div>
+                        <h3 className="text-lg font-display font-bold text-white">{e.role}</h3>
+                        <p className="text-sm text-primary">{e.org} <span className="text-slate-500">· {e.place}</span></p>
+                      </div>
+                      <span className="text-[10px] font-mono tracking-wider text-slate-400 px-2.5 py-1 rounded-full bg-white/5 border border-white/10">{e.period}</span>
+                    </div>
+                    {e.tag && <span className="inline-block text-[10px] font-bold tracking-widest uppercase text-secondary mb-3">{e.tag}</span>}
+                    <ul className="space-y-1.5 text-sm text-slate-400">
+                      {e.bullets.slice(0, 3).map((b) => (
+                        <li key={b} className="flex gap-2"><span className="mt-2 w-1 h-1 rounded-full bg-primary shrink-0" />{b}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <ol className="flex flex-col gap-4">
-            {experience.map((e, i) => {
-              const open = openId === e.id;
-              return (
-                <li key={e.id} className="reveal relative pl-9 sm:pl-12">
-                  <span
-                    className={`absolute left-0 top-5 z-10 h-[18px] w-[18px] rounded-full border-2 sm:left-[11px] ${
-                      i === 0
-                        ? "border-line bg-accent shadow-[0_0_0_6px_color-mix(in_srgb,var(--accent)_25%,transparent)]"
-                        : i === experience.length - 1
-                          ? "border-line bg-ink"
-                          : "border-line bg-card"
-                    }`}
-                  />
-                  <div
-                    className={`rounded-xl border border-line bg-card transition-shadow ${
-                      open ? "shadow-[5px_5px_0_var(--line)]" : ""
-                    }`}
-                  >
-                    <button
-                      onClick={() => setOpenId(open ? null : e.id)}
-                      className="flex w-full flex-col gap-1 px-5 py-4 text-left sm:flex-row sm:items-center sm:gap-4"
-                    >
-                      <span
-                        className={`mono inline-block w-fit shrink-0 rounded px-2 py-1 text-[10px] font-bold ${
-                          i === 0
-                            ? "bg-accent text-accent-ink"
-                            : i === experience.length - 1
-                              ? "bg-ink text-bg"
-                              : "border border-line text-ink-2"
-                        }`}
-                      >
-                        {i === 0 ? "Delivered" : i === experience.length - 1 ? "Picked up" : "In transit"}
-                      </span>
-                      <span className="flex-1">
-                        <span className="block font-display font-bold">
-                          {e.role} · {e.org}
-                        </span>
-                        <span className="mono block text-[11px] text-muted">
-                          {e.place} · {e.period}
-                        </span>
-                      </span>
-                      <svg
-                        viewBox="0 0 24 24"
-                        className={`h-4 w-4 shrink-0 text-ink-2 transition-transform ${open ? "rotate-180" : ""}`}
-                      >
-                        <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    {open && (
-                      <div className="border-t border-dashed border-line px-5 pb-5 pt-3">
-                        {e.tag && <p className="mono mb-2 text-xs font-bold text-accent">{e.tag}</p>}
-                        <ul className="flex flex-col gap-2">
-                          {e.bullets.map((b, bi) => (
-                            <li key={bi} className="flex gap-2 text-sm text-ink-2">
-                              <span className="mt-[7px] h-[5px] w-[5px] shrink-0 rounded-[1px] bg-accent" />
-                              {b}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+          {/* education + certifications */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="reveal-right glass-panel rounded-2xl p-6 md:p-8 border border-white/5">
+              <p className="text-xs font-mono tracking-widest text-primary mb-4">EDUCATION</p>
+              <div className="space-y-5">
+                {education.map((ed) => (
+                  <div key={ed.degree} className="border-l-2 border-white/10 pl-4 hover:border-primary transition-colors">
+                    <h4 className="text-white font-semibold leading-snug">{ed.degree}</h4>
+                    <p className="text-sm text-slate-400">{ed.school}</p>
+                    <p className="text-xs font-mono text-slate-500 mt-1">{ed.period}</p>
                   </div>
-                </li>
-              );
-            })}
-          </ol>
+                ))}
+              </div>
+            </div>
+            <div className="reveal-right glass-panel rounded-2xl p-6 md:p-8 border border-white/5" data-delay="0.15">
+              <p className="text-xs font-mono tracking-widest text-secondary mb-4">CERTIFICATIONS</p>
+              <ul className="space-y-3">
+                {certifications.map((c) => (
+                  <li key={c.name} className="flex items-center gap-3">
+                    <span className="w-9 h-9 shrink-0 rounded-lg bg-secondary/10 border border-secondary/30 text-secondary text-xs font-bold flex items-center justify-center">{c.code}</span>
+                    <span className="text-sm text-slate-300">{c.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>

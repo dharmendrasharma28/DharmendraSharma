@@ -18,7 +18,7 @@ export const profile = {
 
 export const stats = [
   { value: 13, suffix: "+", label: "years in mobile" },
-  { value: 7, suffix: "", label: "companies, one craft" },
+  { value: 40, suffix: "+", label: "apps published" },
   { value: 0, suffix: "5–10", label: "engineers I lead", literal: "5–10" },
   { value: 2, suffix: "", label: "platforms, both stores" },
 ];
@@ -141,10 +141,13 @@ export type Project = {
   period: string;
   description: string;
   tags: string[];
+  categories: string[];
   sku: string;
   featured?: boolean;
   href?: string;
 };
+
+export const projectCategories = ["All", "Mobile", "SDK", "AI & Data", "Leadership"];
 
 export const projects: Project[] = [
   {
@@ -155,16 +158,18 @@ export const projects: Project[] = [
     description:
       "People-transportation app for everyday mobility. Laid the groundwork as Deputy Manager and now spearhead it with a team of 5–10 across Android and iOS.",
     tags: ["Android", "iOS", "Lead"],
+    categories: ["Mobile", "Leadership"],
     sku: "ALYTE-01",
   },
   {
     id: "wms",
-    name: "Warehouse Management System",
+    name: "LogiPick WMS",
     org: "Mahindra Logistics",
     period: "2019 → now",
     description:
-      "Warehouse management system built for productivity and efficiency on the floor — scanning, putaway, picking, and the integrations that keep it honest.",
+      "Warehouse management system live across 40 sites — scanning, putaway, picking, and the integrations that keep it honest. Built for productivity and efficiency on the floor.",
     tags: ["Mobile", "Platform", "Lead"],
+    categories: ["Mobile", "Leadership"],
     sku: "WMS-02",
   },
   {
@@ -175,6 +180,7 @@ export const projects: Project[] = [
     description:
       "App for reporting and tracking safety incidents across sites — fast capture in the field, clear follow-through for the people responsible.",
     tags: ["Android", "iOS", "Operations"],
+    categories: ["Mobile"],
     sku: "SIR-03",
   },
   {
@@ -185,6 +191,7 @@ export const projects: Project[] = [
     description:
       "An agentic Retrieval-Augmented Generation assistant that answers IT policy questions grounded in uploaded documents — built with LangGraph, a four-role guard/planner/retriever/answer pipeline, and a hard rule: say 'I don't know' rather than invent an answer.",
     tags: ["Python", "LangGraph", "RAG", "M.Tech"],
+    categories: ["AI & Data"],
     sku: "MTECH-07",
     featured: true,
   },
@@ -196,6 +203,7 @@ export const projects: Project[] = [
     description:
       "Led development of an Android and iOS app for organisation-wide project, task and team management. Built it, shipped it to both stores.",
     tags: ["Android", "iOS", "Published"],
+    categories: ["Mobile"],
     sku: "TNG-04",
   },
   {
@@ -206,6 +214,7 @@ export const projects: Project[] = [
     description:
       "An Android and iOS SDK that runs mobile market research inside partner apps. Integrated it with diverse codebases and kept it current with every OS release.",
     tags: ["SDK", "Android", "iOS"],
+    categories: ["SDK", "Mobile"],
     sku: "SDK-05",
   },
   {
@@ -216,6 +225,7 @@ export const projects: Project[] = [
     description:
       "Online food-ordering Point of Sale. Owned the client app, the billing system, and the critical logic that integrated with everything else.",
     tags: ["Android", "Billing", "Algorithms"],
+    categories: ["Mobile"],
     sku: "POS-06",
   },
 ];
@@ -271,3 +281,81 @@ export const certifications = [
 ];
 
 export const passions = ["Learning", "Free time", "Mobile apps", "Logistics", "Improvement", "Writing"];
+
+export type SkillItem = { name: string; level: number; category: string; detail: string };
+
+export const skillCategories = ["All", "Platforms", "Engineering", "Delivery & People"];
+
+export const skillsFlat: SkillItem[] = [
+  { name: "Android", level: 95, category: "Platforms", detail: "13 years of the SDK, from Gingerbread to Jetpack" },
+  { name: "iOS & SwiftUI", level: 85, category: "Platforms", detail: "UIKit to SwiftUI, App Store publishing" },
+  { name: "Flutter & Dart", level: 65, category: "Platforms", detail: "one codebase when it earns its keep" },
+  { name: "Systems design", level: 90, category: "Engineering", detail: "apps and the platforms behind them" },
+  { name: "Algorithms & data structures", level: 88, category: "Engineering", detail: "the logic nobody else wanted to own" },
+  { name: "SOLID & MVVM", level: 85, category: "Engineering", detail: "architecture that outlives frameworks" },
+  { name: "SDK development", level: 80, category: "Engineering", detail: "built, integrated, maintained across OS releases" },
+  { name: "Team leadership", level: 90, category: "Delivery & People", detail: "5–10 engineers across product and mobile" },
+  { name: "Agile & Scrum", level: 85, category: "Delivery & People", detail: "estimates people can plan around" },
+  { name: "Data science", level: 65, category: "Delivery & People", detail: "M.Tech, BITS Pilani" },
+  { name: "Mobile UX", level: 75, category: "Delivery & People", detail: "certified, and opinionated about it" },
+];
+
+export type Service = {
+  code: string;
+  title: string;
+  blurb: string;
+  items: string[];
+  tone: "primary" | "secondary";
+  highlight?: boolean;
+};
+
+export const services: Service[] = [
+  {
+    code: "MOBILE",
+    title: "Mobile Engineering",
+    blurb: "Native Android and iOS products from the first screen to the store listing — 13 years of the SDKs, UIKit to SwiftUI, Gingerbread to Jetpack.",
+    items: ["Android & Kotlin", "iOS & SwiftUI", "Flutter & Dart"],
+    tone: "primary",
+  },
+  {
+    code: "CORE",
+    title: "Platform & Systems",
+    blurb: "The platforms behind the apps — systems design, SDKs that survive OS releases, and the algorithms nobody else wanted to own.",
+    items: ["Systems Design", "SDK Development", "SOLID & MVVM"],
+    tone: "primary",
+    highlight: true,
+  },
+  {
+    code: "AI",
+    title: "AI & Data",
+    blurb: "M.Tech in Data Science from BITS Pilani and an agentic RAG assistant built from scratch with LangGraph.",
+    items: ["LangGraph Agents", "RAG Pipelines", "Data Science"],
+    tone: "secondary",
+  },
+  {
+    code: "LEAD",
+    title: "Leadership",
+    blurb: "Leading a team of 5–10 across product and mobile engineering — estimates people can plan around and releases that ship.",
+    items: ["Team Leadership", "Agile & Scrum", "Mobile UX"],
+    tone: "secondary",
+  },
+];
+
+export const skillClusters = [
+  { label: "Mobile Platforms", items: ["Android", "Kotlin", "iOS", "SwiftUI", "Flutter", "Dart"], tone: "primary" as const },
+  { label: "Engineering", items: ["Systems Design", "SDK Development", "MVVM", "SOLID", "Algorithms", "REST APIs"], tone: "primary" as const },
+  { label: "AI & Data", items: ["LangGraph", "RAG", "Python", "Vector DB", "Data Science"], tone: "secondary" as const },
+  { label: "Delivery", items: ["Team Leadership", "Agile", "Scrum", "Mobile UX"], tone: "secondary" as const },
+];
+
+export const tools = [
+  "ANDROID", "KOTLIN", "JAVA", "SWIFT", "SWIFTUI", "UIKIT", "FLUTTER", "DART", "JETPACK",
+  "XCODE", "ANDROID STUDIO", "GIT", "GITHUB", "JIRA", "FIREBASE", "REST", "PYTHON",
+  "LANGGRAPH", "LANGCHAIN", "RAG", "POSTGRESQL", "FIGMA", "PLAY STORE", "APP STORE",
+];
+
+export const socials = [
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/dharmendra-sharma-462a7b79", hover: "hover:bg-[#0077B5] hover:shadow-[0_0_20px_rgba(0,119,181,0.5)]" },
+  { name: "Email", href: "mailto:sharmadharmendra2810@gmail.com", hover: "hover:bg-secondary hover:shadow-[0_0_20px_rgba(205,71,71,0.5)]" },
+  { name: "Phone", href: "tel:+918890900920", hover: "hover:bg-primary hover:shadow-[0_0_20px_rgba(42,111,182,0.5)]" },
+];

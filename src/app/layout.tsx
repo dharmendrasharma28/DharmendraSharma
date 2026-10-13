@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Sora, Inter, JetBrains_Mono } from "next/font/google";
+import { Syne, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const display = Sora({
+const display = Syne({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const body = Inter({
+const body = Outfit({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const mono = JetBrains_Mono({
@@ -21,9 +21,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dharmendra Sharma · Designing Experiences, Not Just Apps",
+  title: "Dharmendra Sharma - Mobile & Platform Engineering Lead, Android & iOS",
   description:
-    "Dharmendra Sharma — Manager, Mobile & Platform Engineering at Mahindra Logistics. 13+ years shipping Android & iOS products and leading teams.",
+    "Dharmendra Sharma — Manager, Mobile & Platform Engineering at Mahindra Logistics. 13+ years shipping Android & iOS products and leading engineering teams.",
   openGraph: {
     title: "Dharmendra Sharma",
     description: "13+ years of Android & iOS. Leading mobile & platform engineering at Mahindra Logistics.",
@@ -31,14 +31,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Runs before paint so the stored theme never flashes.
 const themeScript = `
-(function() {
-  try {
-    var stored = localStorage.getItem('theme');
-    var theme = stored || 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {}
-})();
+(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 `;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -52,8 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="min-h-full antialiased selection:bg-accent" suppressHydrationWarning>
-        <div className="noise" aria-hidden="true" />
+      <body className="min-h-full antialiased bg-bg text-ink font-body" suppressHydrationWarning>
         {children}
       </body>
     </html>

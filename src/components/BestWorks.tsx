@@ -1,16 +1,23 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { projects } from "@/data/resume";
 import { useReveal } from "@/lib/useReveal";
 
-const FEATURED = ["alyte", "wms", "capstone", "sir"];
+const FEATURED = ["logione", "alyte", "wms", "logifreight"];
 const GRADIENTS = [
   "from-primary/40 via-[#0a1a2e] to-secondary/30",
   "from-secondary/40 via-[#1a0a0e] to-primary/30",
   "from-purple-500/40 via-[#120a1e] to-primary/30",
   "from-primary/30 via-[#0a1420] to-emerald-500/20",
 ];
+// Real product shots, keyed by project id. Falls back to a gradient tile when absent.
+const IMAGES: Record<string, string> = {
+  logione: "/logione.jpg",
+  alyte: "/alyte.jpg",
+  wms: "/logipick.jpg",
+};
 
 export default function BestWorks() {
   const scope = useReveal<HTMLElement>();
@@ -82,13 +89,27 @@ export default function BestWorks() {
             <div className="reveal relative h-[50vh] md:h-[60vh] group cursor-pointer" data-delay={i * 0.1}>
               <div className="absolute -inset-1 bg-gradient-to-br from-secondary/30 via-transparent to-blue-500/30 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="relative h-full w-full rounded-[2rem] glass-panel overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-2xl shadow-black/60">
-                <div className={`absolute inset-0 bg-gradient-to-br ${GRADIENTS[i % GRADIENTS.length]} transition-all duration-700 ease-out group-hover:scale-105`}>
-                  <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,.4)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.4)_1px,transparent_1px)] [background-size:48px_48px]" />
-                  <span className="absolute -top-6 -right-4 font-display font-extrabold text-[9rem] md:text-[14rem] leading-none text-white/[0.04] select-none tracking-tighter">
-                    {p.sku.split("-")[0]}
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 via-40% to-transparent transition-all duration-500 group-hover:from-black group-hover:via-black/80 group-hover:to-black/50" />
-                </div>
+                {IMAGES[p.id] ? (
+                  <div className="absolute inset-0 overflow-hidden">
+                    <Image
+                      src={IMAGES[p.id]}
+                      alt={p.name}
+                      fill
+                      sizes="(max-width: 768px) 85vw, 60vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      priority={i === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 via-40% to-black/10 transition-all duration-500 group-hover:from-black group-hover:via-black/75 group-hover:to-black/30" />
+                  </div>
+                ) : (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${GRADIENTS[i % GRADIENTS.length]} transition-all duration-700 ease-out group-hover:scale-105`}>
+                    <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,.4)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.4)_1px,transparent_1px)] [background-size:48px_48px]" />
+                    <span className="absolute -top-6 -right-4 font-display font-extrabold text-[9rem] md:text-[14rem] leading-none text-white/[0.04] select-none tracking-tighter">
+                      {p.sku.split("-")[0]}
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 via-40% to-transparent transition-all duration-500 group-hover:from-black group-hover:via-black/80 group-hover:to-black/50" />
+                  </div>
+                )}
 
                 <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 pb-8 md:p-10 md:pb-12">
                   <div className="flex flex-wrap items-center gap-1.5 mb-3 md:mb-4 max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500 opacity-0 group-hover:opacity-100">

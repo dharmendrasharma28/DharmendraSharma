@@ -8,11 +8,11 @@ const STATS = [
   { value: "5M+", label: "Users" },
   { value: "10M+", label: "Downloads" },
   { value: "4.8★", label: "Store Rating" },
-  { value: "40+", label: "Apps Published" },
+  { value: "50+", label: "Apps Published" },
   { value: "40", label: "Sites on LogiPick WMS" },
   { value: "99.9%", label: "Crash-Free Rate" },
   { value: "90%", label: "Faster Releases" },
-  { value: "13+", label: "Years in Mobile" },
+  { value: "14+", label: "Years in Mobile" },
 ];
 
 export default function About() {
@@ -86,9 +86,13 @@ export default function About() {
             </h2>
 
             <p className="reveal mt-5 md:mt-6 text-base md:text-[1.05rem] leading-relaxed text-slate-400 font-light max-w-[62ch]" data-delay="0.2">
-              I lead mobile architecture, platform engineering, and delivery. Over 13+ years I&apos;ve published 40+ apps to
-              the Play Store and App Store with 10M+ downloads and a 4.8★ rating, and today I lead the mobility and
-              warehouse products at {profile.company} — including LogiPick, the WMS running across 40 sites.
+              I lead mobile application engineering across {profile.company}, driving architecture, platform strategy,
+              and product delivery across mobility, warehouse management, analytics, and AI.
+            </p>
+
+            <p className="reveal mt-4 text-base md:text-[1.05rem] leading-relaxed text-slate-400 font-light max-w-[62ch]" data-delay="0.25">
+              With 14+ years of experience, 50+ published apps, 10M+ downloads, and a 4.8★ rating, I build scalable,
+              high-impact digital solutions that solve real-world business challenges.
             </p>
 
             <div className="reveal mt-8 md:mt-10" data-delay="0.3">

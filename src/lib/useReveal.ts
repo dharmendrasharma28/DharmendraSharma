@@ -1,15 +1,19 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 
 /**
  * Animates every .reveal / .reveal-left / .reveal-right / .reveal-scale
  * inside the returned ref into view when scrolled to (framer-motion
  * `whileInView` equivalent, implemented with GSAP ScrollTrigger).
+ *
+ * Pass `deps` when the set of .reveal elements inside the scope can
+ * change after mount (e.g. a filtered grid) so newly-added elements
+ * get their own ScrollTrigger instead of staying stuck at opacity 0.
  */
-export function useReveal<T extends HTMLElement>() {
+export function useReveal<T extends HTMLElement>(deps: readonly unknown[] = []) {
   const scope = useRef<T>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -32,9 +36,10 @@ export function useReveal<T extends HTMLElement>() {
           scrollTrigger: { trigger: el, start: "top 88%", once: true },
         });
       });
+      ScrollTrigger.refresh();
     }, scope);
     return () => ctx.revert();
-  }, []);
+  }, deps);
 
   return scope;
 }

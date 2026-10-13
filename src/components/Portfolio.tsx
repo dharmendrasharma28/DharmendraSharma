@@ -24,9 +24,9 @@ const TINTS = [
 ];
 
 export default function Portfolio() {
-  const scope = useReveal<HTMLElement>();
   const [filter, setFilter] = useState("All");
   const visible = projects.filter((p) => filter === "All" || p.categories.includes(filter));
+  const scope = useReveal<HTMLElement>([filter]);
 
   return (
     <section id="portfolio" ref={scope} className="relative z-10 py-20 lg:py-32 overflow-x-clip">

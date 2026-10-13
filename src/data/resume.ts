@@ -3,7 +3,7 @@ export const profile = {
   first: "Dharmendra",
   last: "Sharma",
   tagline: "Designing Experiences, Not Just Apps",
-  role: "Manager · Mobile & Platform Engineering",
+  role: "Senior Manager · Mobile Applications",
   company: "Mahindra Logistics",
   location: "Gurugram, Haryana",
   email: "sharmadharmendra2810@gmail.com",
@@ -13,7 +13,7 @@ export const profile = {
   linkedinLabel: "linkedin.com/in/dharmendra-sharma-462a7b79",
   resumeHref: "/Dharmendra-Sharma-Resume.pdf",
   summary:
-    "With 13+ years in mobile engineering, I specialise in digital solutions for logistics, hospitality, market research and transportation. I lead the team building Mahindra Logistics' mobility and warehouse products, after a decade shipping Android and iOS apps and SDKs for startups across Jaipur, Bangalore and Gurugram. Lately I've added data science to the toolkit — an M.Tech at BITS Pilani and an agentic RAG chatbot built from scratch.",
+    "With 14+ years in mobile engineering, I specialise in digital solutions for logistics, hospitality, market research and transportation. I lead the team building Mahindra Logistics' mobility and warehouse products, after a decade shipping Android and iOS apps and SDKs for startups across Jaipur, Bangalore and Gurugram. Lately I've added data science to the toolkit — an M.Tech at BITS Pilani and an agentic RAG chatbot built from scratch.",
 };
 
 export const stats = [
@@ -42,19 +42,34 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
+    id: "senior-manager",
+    role: "Senior Manager",
+    org: "Mahindra Logistics",
+    place: "Gurugram, Haryana",
+    period: "August 2026 – Present",
+    status: "current",
+    tag: "Team of 5–10",
+    bullets: [
+      "Lead mobile application engineering across Mahindra Logistics, driving architecture, platform strategy, and product delivery.",
+      "Own the roadmap across mobility, warehouse management, analytics, and AI products.",
+      "Lead a team of 5–10 across product and mobile engineering, from Android and iOS to platform and AI.",
+      "Drive LogiOne, the unified analytics and AI platform, alongside Alyte, LogiPick, and LogiFreight.",
+    ],
+  },
+  {
     id: "manager",
     role: "Manager",
     org: "Mahindra Logistics",
     place: "Gurugram, Haryana",
-    period: "August 2024 – Present",
-    status: "current",
-    tag: "Team of 5–10",
+    period: "August 2024 – July 2026",
+    status: "past",
+    tag: "Team of 2–3",
     bullets: [
-      "Lead a team of 5–10 people across product and mobile engineering.",
-      "Spearhead a people-transportation application built to improve mobility.",
-      "Lead a warehouse management system aimed at boosting productivity and efficiency.",
-      "Support the Android and iOS teams, ensuring seamless integration and optimal performance across platforms.",
-      "Focus on cutting-edge solutions that streamline operations and elevate user experiences.",
+      "Led a team of 2–3 people across mobile engineering.",
+      "Spearheaded Alyte, the people-transportation application built to improve mobility.",
+      "Led LogiPick, the warehouse management solution, aimed at boosting productivity and efficiency.",
+      "Supported the Android and iOS teams, ensuring seamless integration and optimal performance across platforms.",
+      "Focused on cutting-edge solutions that streamline operations and elevate user experiences.",
     ],
   },
   {
@@ -151,26 +166,49 @@ export const projectCategories = ["All", "Mobile", "SDK", "AI & Data", "Leadersh
 
 export const projects: Project[] = [
   {
+    id: "logione",
+    name: "LogiOne",
+    org: "Mahindra Logistics",
+    period: "2024 → now",
+    description:
+      "Analytics and prediction platform with AI built in — dashboards, forecasting, and Vedaa, a conversational AI chatbot solution for operations teams.",
+    tags: ["Analytics", "AI", "Chatbot", "Lead"],
+    categories: ["Mobile", "AI & Data", "Leadership"],
+    sku: "LOGIONE-01",
+    featured: true,
+  },
+  {
     id: "alyte",
     name: "Alyte",
     org: "Mahindra Logistics",
     period: "2019 → now",
     description:
-      "People-transportation app for everyday mobility. Laid the groundwork as Deputy Manager and now spearhead it with a team of 5–10 across Android and iOS.",
+      "Customer ride-booking application for everyday mobility. Laid the groundwork as Deputy Manager and now spearhead it with a team of 5–10 across Android and iOS.",
     tags: ["Android", "iOS", "Lead"],
     categories: ["Mobile", "Leadership"],
-    sku: "ALYTE-01",
+    sku: "ALYTE-02",
   },
   {
     id: "wms",
-    name: "LogiPick WMS",
+    name: "LogiPick",
     org: "Mahindra Logistics",
     period: "2019 → now",
     description:
-      "Warehouse management system live across 40 sites — scanning, putaway, picking, and the integrations that keep it honest. Built for productivity and efficiency on the floor.",
+      "Warehouse management solution live across 40 sites — scanning, putaway, picking, and the integrations that keep it honest. Built for productivity and efficiency on the floor.",
     tags: ["Mobile", "Platform", "Lead"],
     categories: ["Mobile", "Leadership"],
-    sku: "WMS-02",
+    sku: "WMS-03",
+  },
+  {
+    id: "logifreight",
+    name: "LogiFreight",
+    org: "Mahindra Logistics",
+    period: "2023 → now",
+    description:
+      "Consignment tracking and ePOD (electronic proof of delivery) application — real-time visibility on freight movement from pickup to signed-off delivery.",
+    tags: ["Android", "iOS", "Logistics", "Lead"],
+    categories: ["Mobile", "Leadership"],
+    sku: "LOGIFRT-04",
   },
   {
     id: "sir",
@@ -181,19 +219,30 @@ export const projects: Project[] = [
       "App for reporting and tracking safety incidents across sites — fast capture in the field, clear follow-through for the people responsible.",
     tags: ["Android", "iOS", "Operations"],
     categories: ["Mobile"],
-    sku: "SIR-03",
+    sku: "SIR-05",
   },
   {
-    id: "capstone",
-    name: "IT Policy RAG Chatbot",
+    id: "bits-capstone",
+    name: "Smart Document Parsing",
     org: "BITS Pilani · Capstone",
     period: "2025",
     description:
-      "An agentic Retrieval-Augmented Generation assistant that answers IT policy questions grounded in uploaded documents — built with LangGraph, a four-role guard/planner/retriever/answer pipeline, and a hard rule: say 'I don't know' rather than invent an answer.",
-    tags: ["Python", "LangGraph", "RAG", "M.Tech"],
+      "Smart document parsing pipeline combining CNN-based layout detection with OCR — extracts structured fields from scanned and photographed documents without hand-built templates.",
+    tags: ["Python", "CNN", "OCR", "M.Tech"],
     categories: ["AI & Data"],
-    sku: "MTECH-07",
+    sku: "MTECH-06",
     featured: true,
+  },
+  {
+    id: "edureka-capstone",
+    name: "IT Policy RAG Chatbot",
+    org: "Edureka · Capstone",
+    period: "2025",
+    description:
+      "An agentic Retrieval-Augmented Generation assistant that answers IT policy questions grounded in uploaded documents — built with LangGraph, a four-role guard/planner/retriever/answer pipeline, and a hard rule: say 'I don't know' rather than invent an answer.",
+    tags: ["Python", "LangGraph", "RAG"],
+    categories: ["AI & Data"],
+    sku: "EDU-07",
   },
   {
     id: "tangish-app",
@@ -204,7 +253,7 @@ export const projects: Project[] = [
       "Led development of an Android and iOS app for organisation-wide project, task and team management. Built it, shipped it to both stores.",
     tags: ["Android", "iOS", "Published"],
     categories: ["Mobile"],
-    sku: "TNG-04",
+    sku: "TNG-08",
   },
   {
     id: "unomer-sdk",
@@ -215,7 +264,18 @@ export const projects: Project[] = [
       "An Android and iOS SDK that runs mobile market research inside partner apps. Integrated it with diverse codebases and kept it current with every OS release.",
     tags: ["SDK", "Android", "iOS"],
     categories: ["SDK", "Mobile"],
-    sku: "SDK-05",
+    sku: "SDK-09",
+  },
+  {
+    id: "aha-taxi",
+    name: "Aha Taxi",
+    org: "Alleviate Technologies",
+    period: "2016 – 2018",
+    description:
+      "Outstation cab-booking application — fare estimates, driver assignment, and trip tracking for one-way and round-trip intercity rides.",
+    tags: ["Android", "iOS", "Booking"],
+    categories: ["Mobile"],
+    sku: "TAXI-10",
   },
   {
     id: "ebill",
@@ -226,7 +286,7 @@ export const projects: Project[] = [
       "Online food-ordering Point of Sale. Owned the client app, the billing system, and the critical logic that integrated with everything else.",
     tags: ["Android", "Billing", "Algorithms"],
     categories: ["Mobile"],
-    sku: "POS-06",
+    sku: "POS-11",
   },
 ];
 

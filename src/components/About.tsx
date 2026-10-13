@@ -1,21 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { profile, keywords } from "@/data/resume";
+import { profile } from "@/data/resume";
 import { useReveal } from "@/lib/useReveal";
 
 const STATS = [
-  { value: "13+", label: "Years Exp" },
-  { value: "7", label: "Companies" },
-  { value: "5–10", label: "Team Size" },
-  { value: "2", label: "Platforms" },
+  { value: "5M+", label: "Users" },
+  { value: "10M+", label: "Downloads" },
+  { value: "4.8★", label: "Store Rating" },
+  { value: "40+", label: "Apps Published" },
+  { value: "40", label: "Sites on LogiPick WMS" },
+  { value: "99.9%", label: "Crash-Free Rate" },
+  { value: "90%", label: "Faster Releases" },
+  { value: "13+", label: "Years in Mobile" },
 ];
 
 export default function About() {
   const scope = useReveal<HTMLElement>();
 
   return (
-    <section id="about" ref={scope} className="relative z-10 py-16 lg:py-32 bg-bg-2">
+    <section id="about" ref={scope} className="relative z-10 py-16 lg:py-32 bg-bg-2 overflow-x-clip">
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-bg-2 to-transparent pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="reveal text-center mb-16">
@@ -26,11 +30,11 @@ export default function About() {
             <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent group-hover:w-48 transition-all duration-700" />
           </div>
           <p className="mt-6 text-lg text-slate-400 max-w-2xl mx-auto font-light">
-            {profile.tagline}. Thirteen years of mobile, one team, two app stores.
+            {profile.tagline}.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* portrait card */}
           <div className="reveal lg:col-span-5 relative group mt-8 lg:mt-0">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl -z-10 animate-pulse-slow" />
@@ -74,58 +78,30 @@ export default function About() {
             </div>
           </div>
 
-          {/* bio panel */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="reveal" data-delay="0.15">
-              <div className="glass-panel p-6 sm:p-8 md:p-12 rounded-[1.5rem] sm:rounded-[2rem] border border-white/5 relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                <a
-                  href={profile.resumeHref}
-                  download
-                  className="hidden md:flex absolute top-6 right-6 items-center gap-2 px-4 py-2 rounded-full glass-panel border border-white/10 hover:border-primary/50 text-xs font-bold tracking-wider text-slate-400 hover:text-primary transition-all duration-300 z-10 cursor-pointer"
-                >
-                  LOAD FULL PROFILE
-                  <svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z" /></svg>
-                </a>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6 leading-tight">
-                  Engineering the <br />
-                  <span className="text-primary">Mobile Platform</span>
-                </h2>
-                <div className="space-y-6 text-slate-300 leading-relaxed text-lg font-light">
-                  <p>
-                    I am a <strong className="text-white font-semibold">Mobile Engineering Manager</strong>,{" "}
-                    <strong className="text-white font-semibold">Android &amp; iOS Developer</strong>, and{" "}
-                    <strong className="text-white font-semibold">Data Science Graduate</strong> leading the team that builds Mahindra
-                    Logistics&apos; mobility and warehouse products.
-                  </p>
-                  <p>
-                    With 13+ years across <span className="text-secondary">Android</span> and <span className="text-primary">iOS</span>, I
-                    don&apos;t just ship apps — I build the platforms and SDKs behind them, lead the people who build with me, and lately
-                    I&apos;ve added agentic RAG systems to the toolkit.
-                  </p>
-                </div>
-                <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-                  {STATS.map((s) => (
-                    <div key={s.label} className="flex flex-col text-center sm:text-left">
-                      <span className="text-2xl sm:text-3xl font-bold text-white">{s.value}</span>
-                      <span className="text-xs uppercase tracking-widest text-slate-500">{s.label}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8 pt-6 border-t border-white/10 md:hidden">
-                  <a href={profile.resumeHref} download className="inline-flex items-center justify-center gap-2 rounded-full font-bold tracking-wide glass-panel border border-white/10 text-white hover:bg-white/10 px-6 py-3 text-xs w-full">
-                    LOAD FULL PROFILE
-                  </a>
-                </div>
-              </div>
-            </div>
+          {/* bio */}
+          <div className="lg:col-span-7 lg:pt-2">
+            <h2 className="reveal font-display text-[clamp(1.75rem,3.6vw,3rem)] font-extrabold leading-[1.08] tracking-tight text-white" data-delay="0.1">
+              <span className="block whitespace-nowrap text-primary">Senior Manager</span>
+              <span className="block whitespace-nowrap">Mobile Applications</span>
+            </h2>
 
-            <div className="reveal" data-delay="0.3">
-              <div className="flex flex-wrap gap-2 md:gap-3 pt-2">
-                {keywords.map((k) => (
-                  <span key={k} className="px-3 py-1.5 md:px-4 md:py-2 rounded-full glass-panel text-xs md:text-sm text-slate-300 border border-white/10 hover:border-primary/50 hover:text-white transition-all cursor-default">
-                    {k}
-                  </span>
+            <p className="reveal mt-5 md:mt-6 text-base md:text-[1.05rem] leading-relaxed text-slate-400 font-light max-w-[62ch]" data-delay="0.2">
+              I lead mobile architecture, platform engineering, and delivery. Over 13+ years I&apos;ve published 40+ apps to
+              the Play Store and App Store with 10M+ downloads and a 4.8★ rating, and today I lead the mobility and
+              warehouse products at {profile.company} — including LogiPick, the WMS running across 40 sites.
+            </p>
+
+            <div className="reveal mt-8 md:mt-10" data-delay="0.3">
+              <p className="flex items-center gap-3 text-[11px] font-mono font-semibold tracking-[0.35em] uppercase text-slate-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_10px_rgba(var(--primary-rgb),0.8)]" />
+                Track Record
+              </p>
+              <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-5 md:gap-x-6">
+                {STATS.map((st) => (
+                  <div key={st.label} className="border-l border-white/15 pl-3 md:pl-4 py-0.5">
+                    <span className="block text-2xl md:text-[1.75rem] font-semibold tracking-tight text-white whitespace-nowrap">{st.value}</span>
+                    <span className="mt-1 block text-xs md:text-sm text-slate-400">{st.label}</span>
+                  </div>
                 ))}
               </div>
             </div>

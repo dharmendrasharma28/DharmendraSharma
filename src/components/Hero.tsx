@@ -51,21 +51,21 @@ export default function Hero() {
         <div className="mb-8 md:mb-10">
           <h1 className="neon-text text-5xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-tight">
             <span className="hero-word block md:inline text-transparent bg-clip-text bg-gradient-to-b from-primary via-primary to-primary/50 drop-shadow-glow drop-shadow-[0_0_40px_rgba(var(--primary-rgb),0.6)] opacity-0 blur-[10px] translate-y-[30px]">
-              Build.
+              Think Smart.
             </span>{" "}
             <span className="hero-word block md:inline text-transparent bg-clip-text bg-gradient-to-b from-secondary via-secondary to-secondary/50 drop-shadow-glow drop-shadow-[0_0_40px_rgba(var(--secondary-rgb),0.6)] opacity-0 blur-[10px] translate-y-[30px]">
-              Lead.
+              Build Better.
             </span>{" "}
             <span className="hero-word block md:inline text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/50 drop-shadow-glow drop-shadow-[0_0_30px_rgba(var(--accent-rgb),0.45)] opacity-0 blur-[10px] translate-y-[30px]">
-              Ship.
+              Scale Faster.
             </span>
           </h1>
           <p className="hero-sub mt-4 md:mt-6 text-lg md:text-xl font-light max-w-2xl mx-auto px-4 opacity-0 translate-y-5">
-            <span className="text-primary/70">Android &amp; iOS</span>
+            <span className="text-primary/70">Mobile Apps</span>
             <span className="text-slate-500"> • </span>
-            <span className="text-secondary/70">Platform Engineering</span>
+            <span className="text-secondary/70">System Architecture</span>
             <span className="text-slate-500"> • </span>
-            <span className="text-white/70">Team Leadership</span>
+            <span className="text-white/70">AI Integration</span>
           </p>
         </div>
 

@@ -29,7 +29,7 @@ export default function Portfolio() {
   const visible = projects.filter((p) => filter === "All" || p.categories.includes(filter));
 
   return (
-    <section id="portfolio" ref={scope} className="relative z-10 py-20 lg:py-32">
+    <section id="portfolio" ref={scope} className="relative z-10 py-20 lg:py-32 overflow-x-clip">
       <div className="max-w-7xl mx-auto px-6">
         <div className="reveal text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-4">Portfolio</h2>

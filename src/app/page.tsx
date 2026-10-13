@@ -11,7 +11,6 @@ import Experience from "@/components/Experience";
 import CallToAction from "@/components/CallToAction";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Home() {
   return (
@@ -28,7 +27,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <ThemeToggle floating />
     </SmoothScroll>
   );
 }

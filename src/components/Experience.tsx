@@ -7,7 +7,7 @@ export default function Experience() {
   const scope = useReveal<HTMLElement>();
 
   return (
-    <section id="experience" ref={scope} className="relative z-10 py-20 lg:py-28">
+    <section id="experience" ref={scope} className="relative z-10 py-20 lg:py-28 overflow-x-clip">
       <div className="absolute top-1/3 -left-20 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="reveal text-center mb-16">

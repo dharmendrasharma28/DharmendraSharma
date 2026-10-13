@@ -18,7 +18,7 @@ export const profile = {
 
 export const stats = [
   { value: 13, suffix: "+", label: "years in mobile" },
-  { value: 7, suffix: "", label: "companies, one craft" },
+  { value: 40, suffix: "+", label: "apps published" },
   { value: 0, suffix: "5–10", label: "engineers I lead", literal: "5–10" },
   { value: 2, suffix: "", label: "platforms, both stores" },
 ];
@@ -163,11 +163,11 @@ export const projects: Project[] = [
   },
   {
     id: "wms",
-    name: "Warehouse Management System",
+    name: "LogiPick WMS",
     org: "Mahindra Logistics",
     period: "2019 → now",
     description:
-      "Warehouse management system built for productivity and efficiency on the floor — scanning, putaway, picking, and the integrations that keep it honest.",
+      "Warehouse management system live across 40 sites — scanning, putaway, picking, and the integrations that keep it honest. Built for productivity and efficiency on the floor.",
     tags: ["Mobile", "Platform", "Lead"],
     categories: ["Mobile", "Leadership"],
     sku: "WMS-02",
